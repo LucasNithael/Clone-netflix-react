@@ -33,32 +33,32 @@ const myList = {
             },
             {
                 slug: 'toprated',
-                title: 'Recomendados para Você',
+                title: 'Em alta',
                 itens: await basicFetch(`/movie/top_rated?language=pt-BR&api_key=${API_KEY}`)
             },
             {
                 slug: 'action',
-                title: 'Recomendados para Você',
+                title: 'Ação',
                 itens: await basicFetch(`/discover/movie?with_genres=28&language=pt-BR&api_key=${API_KEY}`)
             },
             {
                 slug: 'comedy',
-                title: 'Recomendados para Você',
+                title: 'Comédia',
                 itens: await basicFetch(`/discover/movie?with_genres=35&language=pt-BR&api_key=${API_KEY}`)
             },
             {
                 slug: 'horror',
-                title: 'Recomendados para Você',
+                title: 'Terror',
                 itens: await basicFetch(`/discover/movie?with_genres=27&language=pt-BR&api_key=${API_KEY}`)
             },
             {
                 slug: 'romance',
-                title: 'Recomendados para Você',
+                title: 'Romance',
                 itens: await basicFetch(`/discover/movie?with_genres=10749&language=pt-BR&api_key=${API_KEY}`)
             },
             {
                 slug: 'documentary',
-                title: 'Recomendados para Você',
+                title: 'Documentário',
                 itens: await basicFetch(`/discover/movie?with_genres=99&language=pt-BR&api_key=${API_KEY}`)
             },
         ]
