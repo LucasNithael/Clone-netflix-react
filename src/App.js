@@ -19,8 +19,9 @@ export default () => {
       let orininals = list.filter(i => i.slug === 'originals')
       let randomChosen = Math.floor(Math.random() * (orininals[0].itens.results.length - 1))
       let chosen = orininals[0].itens.results[randomChosen]
-
-      console.log(chosen)
+      let chosenInfo = await myList.getMovieInfo(chosen.id, 'tv')
+     setFeaturedData(chosenInfo)
+      
     }
 
     loadAll()
@@ -29,7 +30,7 @@ export default () => {
   return (
     <div className='page'>
 
-      <FeaturedMovie />
+      <FeaturedMovie item={featureData}/>
 
       <section className="lists">
         {movieList.map((item, key) => (

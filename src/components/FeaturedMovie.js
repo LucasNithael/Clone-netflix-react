@@ -1,11 +1,11 @@
 import React from "react";
 import './FeaturedMovie.css'
 
-const FeaturedMovie = () => {
+const FeaturedMovie = ({item}) => {
     return(
-        <div>
-            FILME EM DESTAQUE
-        </div>
+        <section className="featured">
+            <div>{item.original_name}</div>
+        </section>
     )
 }
 
