@@ -3,11 +3,13 @@ import './App.css'
 import myList from './Tmdb'
 import MovieRow from './components/MovieRow'
 import FeaturedMovie from './components/FeaturedMovie'
+import Header from './components/Header'
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default () => {
+
+const App = () => {
   const [movieList, setMovieList] = useState([])
   const [featureData, setFeaturedData] = useState(null)
+  const [blackHeader, setHeaderBlack] = useState(false)
 
   useEffect(() => {
     const loadAll = async () => {
@@ -27,11 +29,27 @@ export default () => {
     loadAll()
   }, [])
 
+
+  useEffect(() => {
+    const scrollListener = () => {
+      if(window.scrollY > 10)
+        setHeaderBlack(true)
+      else
+        setHeaderBlack(false)
+      }
+
+    window.addEventListener('scroll', scrollListener)
+
+    return () => {
+      window.removeEventListener('scroll', scrollListener)
+    }
+  }, [])
+
   return (
     <div className='page'>
+      <Header black={blackHeader}/>
 
-      <FeaturedMovie item={featureData}/>
-
+      { featureData && <FeaturedMovie item={featureData}/> }
       <section className="lists">
         {movieList.map((item, key) => (
           <MovieRow key={key} title={item.title} itens={item.itens}/>
@@ -43,4 +61,4 @@ export default () => {
 
 
 
-//https://api.themoviedb.org/3/movie/550?api_key=38c007f28d5b66f36b9c3cf8d8452a4b&language=pt-BR
+export default App
