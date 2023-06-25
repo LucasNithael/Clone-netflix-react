@@ -2,6 +2,10 @@ import React from "react";
 import './FeaturedMovie.css'
 
 const FeaturedMovie = ({item}) => {
+    let description = item.overview
+    if(description.length > 200){
+        description = description.substring(0, 200)+'...'
+    }
 
     let firstDate = new Date(item.first_air_date).getFullYear()
     let genres = []
@@ -25,7 +29,7 @@ const FeaturedMovie = ({item}) => {
                         </div>
                     </div>
                     <div className="featured--description">
-                        {item.overview}
+                        {description}
                     </div>
                     <div className="featured--buttons">
                         <a href={`/watch/${item.id}`} className="featured--watchbutton">➤ Assistir</a>
