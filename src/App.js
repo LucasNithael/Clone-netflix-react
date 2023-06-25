@@ -16,17 +16,19 @@ const App = () => {
       // lista total de filmes
       let list = await myList.getHomeList()
       setMovieList(list)
-
+      
       // filme em destaque
       let orininals = list.filter(i => i.slug === 'originals')
       let randomChosen = Math.floor(Math.random() * (orininals[0].itens.results.length - 1))
       let chosen = orininals[0].itens.results[randomChosen]
       let chosenInfo = await myList.getMovieInfo(chosen.id, 'tv')
-     setFeaturedData(chosenInfo)
+      setFeaturedData(chosenInfo)
       
     }
-
-    loadAll()
+    
+    setTimeout(() => {
+      loadAll()
+    }, 3000)
   }, [])
 
 
@@ -55,6 +57,12 @@ const App = () => {
           <MovieRow key={key} title={item.title} itens={item.itens}/>
         ))}
       </section>
+
+      { movieList.length <= 0 &&   
+        <div className="loading">
+          <img src="https://rchandru.com/images/portfolio/modals/m-loading.gif" alt="load" />
+        </div>
+      }
     </div>
   )
 }
